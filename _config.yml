@@ -17,9 +17,9 @@ minimal_mistakes_skin: "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon
 # Site Settings
 locale: "en-US"
 rtl: # true, false (default) # turns direction of the page into right to left for RTL languages
-title: "Tinuvile "
+title: "Hello"
 title_separator: "-"
-subtitle: "Here is personal website of Zhang Zhuhe" # site tagline that appears below site title in masthead
+subtitle: "Welcome to my website" # site tagline that appears below site title in masthead
 name: "Zhang Zhuhe"
 description: "An amazing website."
 url: "https://tinuvile.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -113,8 +113,8 @@ analytics:
 # Site Author
 author:
   name: "Zhang Zhuhe"
-  avatar: "/assets/images/head.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio: " I'm an ungraduated student of Tongji University, China"
+  avatar: "/assets/images/head2.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio: "About me: I'm an ungraduated student of Tongji University"
   location: "Shanghai, China"
   email:
   links:
