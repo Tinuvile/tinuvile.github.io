@@ -23,7 +23,7 @@ subtitle: "Here is personal website of Zhang Zhuhe" # site tagline that appears 
 name: "Zhang Zhuhe"
 description: "An amazing website."
 url: "https://tinuvile.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl: "/tinuvile.github.io" # the subpath of your site, e.g. "/blog"
+baseurl: "" # the subpath of your site, e.g. "/blog"
 repository: "tinuvile/tinuvile.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser: /assets/images/teaser.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo: "/assets/images/logo.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
