@@ -15,7 +15,7 @@ remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale: "en-US"
+locale: "zh-CN"
 rtl: # true, false (default) # turns direction of the page into right to left for RTL languages
 title: "Hello"
 title_separator: "-"
@@ -114,7 +114,7 @@ analytics:
 author:
   name: "Zhang Zhuhe"
   avatar: "/assets/images/head2.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio: "About me: I'm an ungraduated student of Tongji University"
+  bio: "Hello, I'm an ungraduated student of Tongji University"
   location: "Shanghai, China"
   email:
   links:

@@ -1,0 +1,14 @@
+Zhuhe Zhang:
+  name: "Zhuhe Zhang"
+  bio: "行至水穷处，坐看云起时"
+  avatar: "/assets/images/head.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:tinuvile@outlook.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://tinuvile.github.io"
+    - label: "Weixin"
+      icon: "fab fa-fw fa-weixin-square"
+      url: "wxid_bzwyjdujaj6922"
