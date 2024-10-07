@@ -7,7 +7,7 @@ main:
   - title: "Travel journals"
     url: /travel-journal/
   - title: "Photograph"
-    url: /Photograph/
+    url: /photograph/
   - title: "External Link"
     url: https://google.com
     target: _blank
