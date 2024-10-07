@@ -1,13 +1,13 @@
 # main links
 main:
-  - title: "Personal profile"
-    url: /docs/Personal profile/
   - title: "Learning notes"
-    url: /docs/Learning notes/
+    url: /Learning notes/
   - title: "Informal essay"
-    url: /docs/Informal essay/
+    url: /Informal essay/
+  - title: "Travel journals"
+    url: /travel-journal/
   - title: "Photograph"
-    url: /docs/Photograph/
+    url: /Photograph/
   - title: "External Link"
     url: https://google.com
     target: _blank
