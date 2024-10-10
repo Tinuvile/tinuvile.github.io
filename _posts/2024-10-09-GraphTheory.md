@@ -1,7 +1,7 @@
 ---
 title: "图论基础"
 date: 2024-10-09
-categories: [learning]
+categories: [CS70]
 tags: [图论]
 layout: single
 author_profile: true

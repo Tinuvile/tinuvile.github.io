@@ -11,4 +11,10 @@ author_profile: true
       <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>  
     </li>  
   {% endfor %}  
+  <li>  
+    <a href="{{ site.baseurl }}/CS70/">CS70 Notes</a>  
+  </li>  
+  <li>  
+    <a href="{{ site.baseurl }}/nand2tetris/">nand2tetris</a>  
+  </li>  
 </ul>

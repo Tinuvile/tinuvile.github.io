@@ -1,7 +1,7 @@
 ---
 title: "基本逻辑门、多路复用器和解复用器"
 date: 2024-10-07
-categories: [learning]
+categories: [nand2tetris]
 tags: [逻辑门, 复用器, 解复用器]
 layout: single
 author_profile: true
