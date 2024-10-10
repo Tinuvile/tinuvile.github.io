@@ -61,6 +61,10 @@ related: true
     the in-degree of a vertex u is the number of edges from other vertices to u.
     the out-degree of u is the number of edges from u to other vertices.
 
+图形的度数序列
+
+    The degree sequence of a graph is the sequence of the degrees of the vertices, arranged in descend-ing order, with repetitions as needed.
+
 树(tree)
 
     A graph is a tree if it is connected and acyclic (contains no cycles).
