@@ -17,4 +17,7 @@ author_profile: true
   <li>  
     <a href="{{ site.baseurl }}/nand2tetris/">nand2tetris</a>  
   </li>  
+  <li>  
+    <a href="{{ site.baseurl }}/CS61B/">CS61B</a>  
+  </li>  
 </ul>
