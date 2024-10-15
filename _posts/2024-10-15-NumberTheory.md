@@ -56,7 +56,7 @@ related: true
     <strong>剩余类模</strong><br>
     <p>
     residue classes <strong>剩余类模</strong><br>
-residue classes \(\pmod{m}\): the union of all congruent modulo m.
+    residue classes \(\pmod{m}\): the union of all congruent modulo m.
     </p>
 </body>
 
@@ -67,7 +67,7 @@ residue classes \(\pmod{m}\): the union of all congruent modulo m.
 </head>  
 <body>  
     <blockquote>
-    Theorem 6.1. If \( a \equiv c \pmod{m} \) and \( b \equiv d \pmod{m} \), then \( a + b \equiv c + d \pmod{m} \) and \( a \cdot b \equiv c \cdot d \pmod{m} \).
+    <strong>Theorem 6.1.</strong> If \( a \equiv c \pmod{m} \) and \( b \equiv d \pmod{m} \), then \( a + b \equiv c + d \pmod{m} \) and \( a \cdot b \equiv c \cdot d \pmod{m} \).
     </blockquote>
 </body>
 
@@ -114,7 +114,7 @@ algorithm mod-exp(x, y, m)
 </head>  
 <body>  
     <blockquote>
-    Lemma: For a finite set \(A\), \(f : A → A\) is a bijection if there is an inverse function \(g : A → A\) such that \(∀x ∈ A\), \(g( f (x)) = x\).
+    <strong>Lemma:</strong> For a finite set \(A\), \(f : A → A\) is a bijection if there is an inverse function \(g : A → A\) such that \(∀x ∈ A\), \(g( f (x)) = x\).
     </blockquote>
 </body>
 
@@ -140,7 +140,7 @@ algorithm mod-exp(x, y, m)
 </head>  
 <body>  
     <blockquote>
-    Theorem 6.2. Let \(m\), \(x\) be positive integers such that \(gcd(m, x) = 1\). Then \(x\) has a multiplicative inverse modulo \(m\), and it is unique (modulo \(m\)).
+    <strong>Theorem 6.2.</strong> Let \(m\), \(x\) be positive integers such that \(gcd(m, x) = 1\). Then \(x\) has a multiplicative inverse modulo \(m\), and it is unique (modulo \(m\)).
     </blockquote>
     <p>
     \(gcd(x,y)\)表示\(x\)和\(y\)的最大公约数。
@@ -148,3 +148,59 @@ algorithm mod-exp(x, y, m)
 </body>
 
 ## 欧几里得算法计算逆(Euclid's Algorithm)
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>  
+<body>  
+    <blockquote>
+    <strong>Theorem 6.3.</strong> Let \(x ≥ y > 0\). Then \(gcd(x, y)\) \(=\) \(gcd(y, x\pmod{y})\).
+    </blockquote>
+</body>
+
+```plaintext
+algorithm gcd(x, y)
+     if y = 0 then return(x)
+     else return(gcd(y, x (mod y)))
+```
+
+> <strong>Theorem 6.4.</strong> The algorithm above correctly computes the gcd of x and y.
+
+```plaintext
+algorithm extended-gcd(x, y)
+     if y = 0 then return(x, 1, 0)
+     else
+         (d, a, b) := extended-gcd(y, x (mod y))
+         return((d, b, a - (x div y) * b))
+```
+
+## 算术基本定理(Fundamental Theorem of Arithmetic)
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>  
+<body>  
+    <blockquote>
+    <strong>Claim:</strong> Let \(x\), \(y\), and \(z\) be positive integers such that \(gcd(x, y) = 1\). If
+    \(x | yz\), then \(x | z\).
+    </blockquote>
+</body>
+
+---
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>  
+<body>  
+    <blockquote>
+    <strong>Fundamental Theorem of Arithmetic:</strong> Every positive integer \(n > 1\) can be expressed uniquely in the form \(p_1 p_2 · · · p_k\), where each \(p_i\) is a (not necessarily unique) prime number, up to reordering of the prime factors.
+    </blockquote>
+</body>
+
+## 中国余数定理(Chinese Remainder Theorem)

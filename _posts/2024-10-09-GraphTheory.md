@@ -154,7 +154,7 @@ related: true
 
 ### 定理
 
-> Theorem 5.1 (Euler’s Theorem (1736)). An undirected graph G = (V, E) has an Eulerian tour iff G is even
+> <strong>Theorem 5.1 (Euler’s Theorem (1736)).</strong> An undirected graph G = (V, E) has an Eulerian tour iff G is even
 > degree, and connected (except possibly for isolated vertices)
 
 ### 证明
@@ -263,7 +263,7 @@ list<int> Graph::Euler(int s) {
 
 ### 定理
 
-> Theorem 5.2. (Euler’s formula) For every connected planar graph, v + f = e + 2
+> <strong>Theorem 5.2.</strong> (Euler’s formula) For every connected planar graph, v + f = e + 2
 
 该定理也可以通过归纳证明,根据图形是否是树分为两种情况进行证明，此处省略。
 
@@ -274,7 +274,7 @@ list<int> Graph::Euler(int s) {
 </head>  
 <body>  
     <blockquote>  
-        <p>Theorem 5.2.1. in any planar graph, \(\sum_{i=1}^{f} s_i = 2e \), \(s_i\) means the number of sides of face i.</p>   
+        <p><strong>Theorem 5.2.1.</strong> in any planar graph, \(\sum_{i=1}^{f} s_i = 2e \), \(s_i\) means the number of sides of face i.</p>   
     </blockquote>  
 </body>
 
@@ -290,11 +290,11 @@ list<int> Graph::Euler(int s) {
     </p>
 </body>
 
-> Theorem 5.3.(Kuratowski) A graph is non-planar if and only if it contains K<sub>5</sub> or K<sub>3,3</sub>.<br> <small class="small-note">K<sub>5</sub>表示有一组 5 个顶点，K<sub>3,3</sub>表示两组每组 3 个顶点，其中每个顶点间都有连线</small>
+> <strong>Theorem 5.3.(Kuratowski)</strong> A graph is non-planar if and only if it contains K<sub>5</sub> or K<sub>3,3</sub>.<br> <small class="small-note">K<sub>5</sub>表示有一组 5 个顶点，K<sub>3,3</sub>表示两组每组 3 个顶点，其中每个顶点间都有连线</small>
 
 ---
 
-> Theorem 5.4. Every planar graph can be colored with five colors.
+> <strong>Theorem 5.4.</strong> Every planar graph can be colored with five colors.
 
 证明：<br>
 基础情况：对于很小的平面图，可以简单地用五种颜色进行着色；<br>
@@ -343,7 +343,7 @@ list<int> Graph::Euler(int s) {
 </head>  
 <body>  
     <blockquote>  
-        <p>Lemma 5.1. The total number of edges in an n-dimensional hypercube is \(n \cdot 2^{(n-1)}\).</p>   
+        <p><strong>Lemma 5.1.</strong> The total number of edges in an n-dimensional hypercube is \(n \cdot 2^{(n-1)}\).</p>   
     </blockquote>  
 </body>
 
@@ -354,7 +354,7 @@ list<int> Graph::Euler(int s) {
 </head>  
 <body>  
     <blockquote>  
-        <p>Theorem 5.6. Let \( S \subseteq V \) be such that \( |S| \leq |V - S| \) (i.e., that \( |S| \leq 2^{n-1} \)), and let \( E_S \) denote the set of edges connecting \( S \) to \( V - S \), i.e.,  \[E_S := \{ \{u, v\} \in E \mid u \in S \text{ and } v \in V - S \} \] 
+        <p><strong>Theorem 5.6.</strong> Let \( S \subseteq V \) be such that \( |S| \leq |V - S| \) (i.e., that \( |S| \leq 2^{n-1} \)), and let \( E_S \) denote the set of edges connecting \( S \) to \( V - S \), i.e.,  \[E_S := \{ \{u, v\} \in E \mid u \in S \text{ and } v \in V - S \} \] 
         Then, it holds that \( |E_S| \geq |S| \). </p>
     </blockquote>  
 </body>
