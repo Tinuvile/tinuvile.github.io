@@ -34,7 +34,7 @@ enable_copy_code_button: true # true, false (default)
 copyright: # "copyright" name, defaults to site.title
 copyright_url: # "copyright" URL, defaults to site.url
 comments:
-  provider: "facebook" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider: "giscus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
     shortname: # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -48,6 +48,7 @@ comments:
     theme: # "github-light" (default), "github-dark"
     issue_term: # "pathname" (default)
   giscus:
+    repository: Tinuvile/tinuvile.github.io
     repo_id: # Shown during giscus setup at https://giscus.app
     category_name: # Full text name of the category
     category_id: # Shown during giscus setup at https://giscus.app
