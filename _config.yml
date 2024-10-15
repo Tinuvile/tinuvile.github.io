@@ -48,18 +48,18 @@ comments:
     theme: # "github-light" (default), "github-dark"
     issue_term: # "pathname" (default)
   giscus:
-    repository: Tinuvile/tinuvile.github.io
-    repo_id: # Shown during giscus setup at https://giscus.app
-    category_name: # Full text name of the category
-    category_id: # Shown during giscus setup at https://giscus.app
-    discussion_term: # "pathname" (default), "url", "title", "og:title"
-    reactions_enabled: # '1' for enabled (default), '0' for disabled
-    theme: # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
-    strict: # 1 for enabled, 0 for disabled (default)
-    input_position: # "top", "bottom" # The comment input box will be placed above or below the comments
-    emit_metadata: # 1 for enabled, 0 for disabled (default) # https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#imetadatamessage
-    lang: # "en" (default)
-    lazy: # true, false # Loading of the comments will be deferred until the user scrolls near the comments container.
+    #repository: Tinuvile/tinuvile.github.io
+    repo_id: Tinuvile/tinuvile.github.io # Shown during giscus setup at https://giscus.app
+    category_name: "Announcements" # Full text name of the category
+    category_id: Tinuvile/tinuvile.github.io/discussions/categories/announcements # Shown during giscus setup at https://giscus.app
+    discussion_term: "pathname" # "pathname" (default), "url", "title", "og:title"
+    reactions_enabled: "1" # '1' for enabled (default), '0' for disabled
+    theme: "light" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
+    strict: "1" # 1 for enabled, 0 for disabled (default)
+    input_position: "top" # "top", "bottom" # The comment input box will be placed above or below the comments
+    emit_metadata: 1" # 1 for enabled, 0 for disabled (default) # https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#imetadatamessage
+    lang: "zh-CN" # "en" (default)
+    lazy: true # true, false # Loading of the comments will be deferred until the user scrolls near the comments container.
   staticman:
     branch: # "master"
     endpoint: # "https://{your Staticman v3 API}/v3/entry/github/"
