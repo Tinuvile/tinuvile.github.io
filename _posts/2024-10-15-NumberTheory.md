@@ -49,14 +49,13 @@ related: true
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
 </head>  
 <body>
-    <strong>全等模</strong>
+    <strong>\(x\) and \(y\) are congruent modulo \(m\) （全等模）</strong><br>
     <p>For any integer m, we say that x and y are congruent modulo m if they differ by a multiple of m or, in symbols, \(x ≡ y \pmod{m} ⇐⇒ m\) divides \((x − y).\)</p> 
     <p>Notice that x and y are congruent modulo m iff they have the same remainder modulo m; in other words,<br>
     \(x ≡ y \pmod{m} ⇐⇒ x \pmod{m} = y \pmod{m}.\)</p>
-    <strong>剩余类模</strong><br>
+    <strong>residue classes（剩余类模）</strong><br>
     <p>
-    residue classes <strong>剩余类模</strong><br>
-    residue classes \(\pmod{m}\): the union of all congruent modulo m.
+    residue classes \(\pmod{m}\): the union of all congruent modulo \(m\).
     </p>
 </body>
 
@@ -127,7 +126,7 @@ algorithm mod-exp(x, y, m)
 </head>  
 <body>  
     <p>
-    when we wish to divide by x \(\pmod{m}\), we need to find \(y \pmod{m}\) such that \(x · y ≡ 1 \pmod{m}\); then dividing by \(x\) modulo \(m\) will be the same as multiplying by \(y\) modulo \(m\). Such a \(y\) is called the multiplicative inverse of \(x\) modulo \(m\).
+    when we wish to divide by \(x \pmod{m}\), we need to find \(y \pmod{m}\) such that \(x · y ≡ 1 \pmod{m}\); then dividing by \(x\) modulo \(m\) will be the same as multiplying by \(y\) modulo \(m\). Such a \(y\) is called the multiplicative inverse of \(x\) modulo \(m\).
     </p>
 </body>
 
@@ -147,7 +146,26 @@ algorithm mod-exp(x, y, m)
     </p>
 </body>
 
+---
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>  
+<body>  
+    <strong><i>Proof</i></strong><br>
+    <p>
+    考虑\(m\)个数字的序列\(0,x,2x,...,(m-1)x\)，假设它们都是不同的modulo \(m\)，而由于从\(0\)到\(m\)只有\(m\)个值可取为模的值，则必须存在\(ax ≡ 1\) \(\pmod{m}\)，则\(a\)是\(x\)唯一的乘法逆模。<br>
+    若对于\( 0 ≤ b ≤ a ≤ m − 1\)存在\(ax ≡ bx\) \(\pmod{m}\)，那么则有\((a − b)x ≡ 0\) \(\pmod{m}\)，但\(x\)和\(m\)是一对素数，故而产生矛盾，则只有唯一的乘法逆模。<br>
+    事实上可以证明，上述定理是充要条件。<br>
+    假设\(x\)有一个逆\(a\)，则\(ax ≡ 1\) \(\pmod{m}\)，也即\(ax-km=1\)，那么根据<a href="https://oi-wiki.org/math/number-theory/bezouts/" target="_blank">Bézout's lemma</a>，可以推出\(x\)和\(m\)互质。
+    </p>
+</body>
+
 ## 欧几里得算法计算逆(Euclid's Algorithm)
+
+### Euclid's algorithm
 
 <head>  
     <meta charset="UTF-8">    
@@ -168,6 +186,8 @@ algorithm gcd(x, y)
 
 > <strong>Theorem 6.4.</strong> The algorithm above correctly computes the gcd of x and y.
 
+### Extended Euclid's algorithm
+
 ```plaintext
 algorithm extended-gcd(x, y)
      if y = 0 then return(x, 1, 0)
@@ -175,6 +195,8 @@ algorithm extended-gcd(x, y)
          (d, a, b) := extended-gcd(y, x (mod y))
          return((d, b, a - (x div y) * b))
 ```
+
+### Division in modular arithmetic
 
 ## 算术基本定理(Fundamental Theorem of Arithmetic)
 
@@ -203,4 +225,56 @@ algorithm extended-gcd(x, y)
     </blockquote>
 </body>
 
+---
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>
+<body>
+    <strong><i>Proof</i></strong>
+    <p>
+    假设我们可以用两个质因数分解来表示\(n\)，\(n = p_1 p_2 · · · p_k \) \(= q_1q_2 · · · q_l\)，不妨设\(k ≤ l\)；<br>
+    首先考虑\(p_1\)，因为\(p_1|n\)，所以有\(p_1|q_1 q_2 · · · q_l\)，若\(p_1\)属于\(q_l\)，得证；若不属于，对于\(1 ≤ j ≤ l − 1\)有\(gcd(p_1,q_j) = 1\)，那么则必有\(p_1 | q_l\)，则\(p_1 = q_l\)；<br>
+    类似的，我们可以证明\(p_2 ,p_3 ,··· ,p_k\)，在这一过程中，我们会对\(q_j\)进行重新排序。
+    </p>
+</body>
+
 ## 中国余数定理(Chinese Remainder Theorem)
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>  
+<body>  
+    <blockquote>
+    For \(m\), \(n\) with \(gcd(m, n) = 1\) that there is exactly one \(x\) \( \pmod{mn} \) that satisfies the equations:<br>
+    \(x ≡ a\) \( \pmod{n} \) and \(x ≡ b\) \( \pmod{m} \).
+    </blockquote>
+</body>
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>  
+<body>  
+    <blockquote>
+    <strong>Chinese Reminder Theorem: </strong>
+    Let \( n_1, n_2, \ldots, n_k \) be positive integers that are coprime to each other. Then, for any sequence of integers \( a_i \), there is a unique integer \( x \) between 0 and \( N = \prod_{i=1}^{k} n_i \) that satisfies the congruences:  
+\[  
+\begin{align*}  
+x &\equiv a_1 \pmod{n_1} \\
+x &\equiv a_2 \pmod{n_2} \\
+&\vdots \\
+x &\equiv a_k \pmod{n_k}  
+\end{align*}  
+\]  
+Moreover,  
+\[  
+x \equiv \left( \sum_{i=1}^{k} a_i b_i \right) \mod N  
+\]  
+    </blockquote>
+</body>
