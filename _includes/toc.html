@@ -187,3 +187,16 @@
         {% endif %}
     {% endif %}
 {% endcapture %}{% assign tocWorkspace = '' %}{{ deprecation_warnings }}{{ jekyll_toc -}}
+
+{% if page.toc %}  
+<nav class="toc">  
+  <h2>目录</h2>  
+  <ul>  
+    {% for heading in page.content | markdownify | tocify %}  
+      <li>  
+        <a href="#{{ heading.id }}">{{ heading.title }}</a>  
+      </li>  
+    {% endfor %}  
+  </ul>  
+</nav>  
+{% endif %}
