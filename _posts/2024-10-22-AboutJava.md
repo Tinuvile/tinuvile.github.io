@@ -198,6 +198,14 @@ public void print() {
 }
 ```
 
+总结（接口）：
+
+- 所有方法必须是 public；
+- 所有变量必须是 public static final；
+- 无法实例化；
+- 默认情况下，所有方法都是抽象的，除非指定为 default；
+- 可以为每个类实现多个接口。
+
 ## Extends, Casting, Higher Order Functions
 
 ### Extends
@@ -356,3 +364,184 @@ public static OurComparable max(OurComparable[] items) {
 ```
 
 ## Libraries, Abstract Classes, Packages
+
+### Abstract Data Types (ADTS)
+
+以上文接口部分的代码为例，我们称 List61B 为 Abstract 数据类型。因为它只附带实现而并未以任何具体方式展示这些实现。
+
+### Java Libraries
+
+Java 中具有一些内置的 Abstract 数据类型在 Java 库中。java.util 库中有三个最重要的 ADT：
+
+- List：项的有序集合，常用实现是 ArrayList；
+- Set：严格唯一的项的无序集合（无重复），常用实现是 HashSet；
+- Map：键值对的集合，可以通过 key 访问该值，常用实现是 HashMap。
+
+### Abstract classes
+
+抽象类可以理解成介于 interfaces 和 concrete 类之间的新类，总体来说，它可以做所有 interfaces 可以做的，甚至更多。它的特征如下：
+
+- 方法可以是 public 或者 private；
+- 可以包含任何类型的变量；
+- 无法实例化；
+- 默认情况下，方法是具体的，除非指定为 abstract；
+- 每个类只能实现一个。
+
+### Packages
+
+## Autoboxing
+
+### Industrial Strength Syntax
+
+### Autoboxing and Unboxing
+
+Java 只有 8 个基元类型，其他都是引用类型。在 Java 语法中，我们不能提供原始类型作为泛型的实际类型参数，而需要使用相应的 reference type。不过幸运的是，Java 可以在原始类型和包装类型之间进行隐式转换，即会在原始类型和相应引用类型之间"box"和"unbox"值。
+
+<table>  
+  <thead>  
+    <tr>  
+      <th>Primitive</th>  
+      <th>Class</th>    
+    </tr>  
+  </thead>  
+  <tbody>  
+    <tr>  
+      <td>byte</td>  
+      <td>Byte</td>
+    </tr>  
+    <tr>  
+      <td>short</td>  
+      <td>Short</td>
+    </tr>  
+    <tr>  
+      <td>int</td>  
+      <td>Integer</td>
+    </tr>
+    <tr>  
+      <td>long</td>  
+      <td>Long</td>
+    </tr>
+    <tr>  
+      <td>float</td>  
+      <td>Float</td>
+    </tr>
+    <tr>  
+      <td>double</td>  
+      <td>Double</td>
+    </tr>
+    <tr>  
+      <td>boolean</td>  
+      <td>Boolean</td>
+    </tr>
+    <tr>  
+      <td>char</td>  
+      <td>Character</td>
+    </tr>
+  </tbody>  
+</table>
+
+但需要注意的是：
+
+- 数组是永远不会自动进行 boxing 或者 unboxing 的；
+- box 和 unbox 会对性能产生可衡量的影响，运行速度会变慢；
+- 包装类型使用的内存比基元类型多很多。
+
+### Widening
+
+类似的，Java 也会在代码需要时自动短值赋长值进行加宽。
+
+## Immutability
+
+不可变数据类型，即其实例在实例化后无法以任何可观察的方式进行改变。任何具有非私有变量的数据类型都是可变的，除非用 final 进行了声明。
+但需要注意的是，将引用声明为 final 并不会使引用指向的对象不可变，例如：
+
+```java
+public final ArrayDeque<String>() deque = new ArrayDeque<String>();
+```
+
+变量 deque 初始化后，始终指向同一个 ArrayDeque 实例，但可以修改这个 ArrayDeque 的内容，如添加、删除和更改元素。同时使用 Reflection API 甚至可以对私有变量进行更改。
+
+## Generics
+
+### Creating Another Generic Class
+
+```java
+package Map61B;
+
+import java.util.List;
+import java.util.ArrayList;
+
+/***
+ * An array-based implementation of Map61B.
+ ***/
+public class ArrayMap<K, V> implements Map61B<K, V> {
+
+    private K[] keys;
+    private V[] values;
+    int size;
+
+    public ArrayMap() {
+        keys = (K[]) new Object[100];
+        values = (V[]) new Object[100];
+        size = 0;
+    }
+
+    /**
+    * Returns the index of the key, if it exists. Otherwise returns -1.
+    **/
+    private int keyIndex(K key) {
+        for (int i = 0; i < size; i++) {
+            if (keys[i].equals(key)) {
+            return i;
+        }
+        return -1;
+    }
+
+    public boolean containsKey(K key) {
+        int index = keyIndex(key);
+        return index > -1;
+    }
+
+    public void put(K key, V value) {
+        int index = keyIndex(key);
+        if (index == -1) {
+            keys[size] = key;
+            values[size] = value;
+            size += 1;
+        } else {
+            values[index] = value;
+        }
+    }
+
+    public V get(K key) {
+        int index = keyIndex(key);
+        return values[index];
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public List<K> keys() {
+        List<K> keyList = new ArrayList<>();
+        for (int i = 0; i == size; i++) {
+            keyList.add(keys[i]);
+        }
+        return keyList;
+    }
+}
+```
+
+### ArrayMap and Autoboxing Puzzle
+
+### Type upper bounds
+
+在泛型中使用 extends 时，与类继承不同，此处表明的是限制与约束。
+
+```java
+public class Box<T extends Comparable<T>> {
+    //内容
+}
+```
+
+这意味着类型 T 必须实现 Comparable 接口，即任何传递给 Box 的类型必须可以进行比较。
