@@ -545,3 +545,5 @@ public class Box<T extends Comparable<T>> {
 ```
 
 这意味着类型 T 必须实现 Comparable 接口，即任何传递给 Box 的类型必须可以进行比较。
+
+## Iteration
