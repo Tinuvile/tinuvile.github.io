@@ -667,4 +667,74 @@ public static void main(String[] args) throws IOException {
 
 ## Iteration
 
-### Implementing Iterators
+Java 允许我们使用一种方便的语法（有时称为"foreach"或者"enhanced for"）来循环遍历 List，例如：
+
+```java
+List<Integer> friends =
+new ArrayList<Integer>();
+friends.add(5);
+friends.add(23);
+friends.add(42);
+for (int x : friends) {
+    System.out.println(x);
+}
+```
+
+此方法我们可以自己实现，使用迭代器，首先定义一个返回迭代器对象的方法
+
+```java
+public Iterator<E> iterator();
+```
+
+然后使用它遍历列表
+
+```java
+List<Integer> friends = new ArrayList<Integer>();
+Iterator<Integer> seer = friends.iterator();
+
+while (seer.hasNext()) {
+    System.out.println(seer.next());
+}
+```
+
+这个方法的效果与上面完全相同。
+
+## Packages
+
+### Creating a Package
+
+1. 将包名称放在此包中每个文件的顶部
+
+   ```java
+    package jason.tinuvile.bird;
+
+    public class Bird {
+        private String name;
+    }
+   ```
+
+2. 将文件储存在具有相应文件夹名称的文件中，该文件夹的名称应该与包匹配
+
+   ```text
+   <your_project_root>
+   │
+   └───jason
+       └───tinuvile
+           └───bird
+               └───Bird.java
+   ```
+
+### Default packages
+
+任何文件顶部没有明确包名的 Java 类都将被自动视为 default 包的一部分。
+
+### JAR Files
+
+## Access Control
+
+- private 私有成员只有给定类中的代码才能访问，子类、包和其他外部类都无法访问；
+- package private 意味着属于同一个 package 的类可以访问，但子类不可以；
+- protected 只有同一包和子类可以访问；
+- public 访问权限对所有人打开。
+
+## Encapsulation, API, ADT
