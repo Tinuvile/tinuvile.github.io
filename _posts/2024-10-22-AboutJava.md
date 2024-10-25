@@ -546,4 +546,125 @@ public class Box<T extends Comparable<T>> {
 
 这意味着类型 T 必须实现 Comparable 接口，即任何传递给 Box 的类型必须可以进行比较。
 
+## Lists, Sets, and ArraySet
+
+### Lists in Real Java Code
+
+之前我们学习的是自己创建 AList 和 SLList，Java 库实际上提供了关于列表的一些内置接口和实现，我们可以使用全名进行访问：
+
+```java
+java.util.List<Integer> L = new java.util.ArrayList<>();
+```
+
+也可以通过导入 Java 库的方式
+
+```java
+import java.util.List;
+import java.util.ArrayList;
+
+public class Example {
+    public static void main(String[] args) {
+        List<Integer> L = new ArrayList<>();
+        L.add(5);
+        L.add(10);
+        System.out.println(L);
+    }
+}
+```
+
+### Sets
+
+```java
+import java.util.Set;
+import java.util.HashSet;
+```
+
+## Throwing Exceptions
+
+隐式异常会导致正常的控制流停止，我们可以使用 throw 关键词引发自己的异常，这样可以提供自己的错误消息，还可以将信息提供给程序中的错误处理代码，这样就是一个我们故意抛出的显式异常
+
+### Catching Exceptions
+
+通过 catch 异常，我们可以防止程序崩溃，关键词 try 和 catch 会中断程序的正常流程，从而保护程序免受异常的影响。例如：
+
+```java
+Dog d = new Dog("Lucy", "Retriever", 80);
+d.becomeAngry();
+
+try {
+    d.receivePat();
+} catch (Exception e) {
+    System.out.println("Tried to pat: " + e);
+}
+System.out.println(d);
+```
+
+此代码的输出是
+
+```text
+$ java ExceptionDemo
+Tried to pat: java.lang.RuntimeException: grrr... snarl snarl
+Lucy is a displeased Retriever weighing 80.0 standard lb units.
+```
+
+我们还可以使用 catch 语句来采取纠正措施
+
+```java
+Dog d = new Dog("Lucy", "Retriever", 80);
+d.becomeAngry();
+
+try {
+    d.receivePat();
+} catch (Exception e) {
+    System.out.println(
+    "Tried to pat: " + e);
+    d.eatTreat("banana");
+}
+d.receivePat();
+System.out.println(d);
+```
+
+输出为：
+
+```text
+$ java ExceptionDemo
+Tried to pat: java.lang.RuntimeException: grrr... snarl snarl
+Lucy munches the banana
+
+Lucy enjoys the pat.
+
+Lucy is a happy Retriever weighing 80.0 standard lb units.
+```
+
+### Checked vs Unchecked Exceptions
+
+同时，也存在一些必须处理才能通过编译器编译的异常，我们将这些称为"checked"异常，必须选中。如下图所示：
+
+<div class="photo">
+     <img src="/assets/images/checked_exceptions.png">
+</div>
+
+而处理它们的方式有两种：
+
+- catch
+- specify
+
+```java
+// catch
+public static void main(String[] args) {
+    try {
+        gulgate();
+    } catch(IOException e) {
+        System.out.println("Averted!");
+    }
+}
+
+// specify
+public static void main(String[] args) throws IOException {
+    gulgate();
+}
+```
+
 ## Iteration
+
+### Implementing Iterators
