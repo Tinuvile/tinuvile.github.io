@@ -31,7 +31,19 @@ related: true
 
 ## 多项式插值(Polynomial Interpolation)
 
-Lagrange interpolation
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>
+<body>
+    <p>
+    假设我们现在知道\(y_1=1\)并且\(y_j=0(2 ≤ j ≤ d + 1)\)，现在我们要求一个符合条件的多项式\(p(x)\)。我们首先考虑\(q(x)=(x-x_2)(x-x_3)···(x-x_{d+1})\)，现在\(2 ≤ j ≤ d + 1\)是符合条件的，考虑\(q(x_1)=(x_1-x_2)(x_1-x_3)···(x_1-x_{d+1})\)，它显然等于某个常数而不等于0。我们令\(p(x)=q(x)/q(x_1)\)，即得到了符合我们要求的多项式。
+    </p>
+    <p>
+    我们把\(y_1=0\)改为\(y_i=0\)，定义\(\Delta_i(x)=\frac{\prod_{j\neq i}(x-x_j)}{\prod_{j\neq i}(x_i-x_j)}\)为通过这些点的多项式。对于给定的点\((x_1,y_1),···,(x_{d+1},y_{d+1})\)，可以构造\(d+1\)个多项式\(\Delta_1(x),\Delta_2(x),···,\Delta_{d+1}(x)\)，通过这些可以表示出目标多项式\(p(x) = \sum_{i=1}^{d+1} y_i \Delta_i(x)\)。
+    </p>
+</body>
 
 ## 有限域(Finite Fields)
 
@@ -53,3 +65,26 @@ Lagrange interpolation
 [伽瓦罗域](https://en.wikipedia.org/wiki/Finite_field)
 
 ## 计数(Counting)
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>
+<body>
+     <p>
+     对于一个次数最高为 2 的多项式\(p(x)\)，其形式为\(p(x)=a_2x^2+a_1x+a_0\)，在模\(m\)的情况下，每个系数可以取\(m\)个不同的值，因此有\(m^3\)种可能的多项式；而如果给定一个点，那么可能的多项式个数就会变为\(m^2\)，事实上二者间的关系可以用下表表示：
+     </p>
+</body>
+
+| Polynomials of Degree ≤ d over F<sub>m</sub> |
+| -------------------------------------------- | ------------------------------- |
+| # of points                                  | # of polynomials                |
+| ------------                                 | ------------------------------- |
+| d + 1                                        | 1                               |
+| d                                            | m                               |
+| d − 1                                        | m<sup>2</sup>                   |
+| ...                                          | ...                             |
+| d − k                                        | m<sup>(k + 1)</sup>             |
+| ...                                          | ...                             |
+| 0                                            | m<sup>(d + 1)</sup>             |

@@ -66,3 +66,38 @@ n + k 个数据包组成的冗余编码，以便接收者可以从任意 n 个�
 </body>
 
 ### Polynomial Interpolation Revisited
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>
+<body>
+    <p>
+    我们的问题目标与之前一致，求解一个符合条件的多项式\(p(x) = a_d x^d + · · · + a_1x + a_0\)。首先，我们可以写出包含\(d+1\)个线性方程的方程组，变量是多项式的系数\(a_0,···,a_d\)，通过求解这些方程式来得到多项式\(p(x)\)的系数。
+    </p>
+</body>
+
+### General Errors
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>
+<body>
+    <p>
+    现在假设Alice希望通过一个更嘈杂的频道与Bob进行交流，她的信息是\(m_1,···,m_n\)，我们可以将\(m_i\)视为字符（类似于英文字母之类）。由于频道嘈杂，这些字符信息在传输过程中会被损坏。现在Bob接受到了与发送数量相同的字符数，但其中有\(k\)个字符已经损坏，但Bob不知道是哪\(k\)个。<br>
+    我们仍然将每个视为一个模\(q\)的数字，对于英文字母，我们可以选择一个大于26的数字为\(q\)，例如29。信息使用多项式\(P(x)\)表示，满足\(P(1)=m_1,P(2)=m_2,···,P(n)=m_n\)。根据之前的论述，Alice需要向Bob传递至少\(n+2k\)个字符。<br>
+    现在Bob需要重建的多项式是次数为\(n-1\)，且满足\(P(i)=r_i\)至少在\(n+k\)个点上成立，现在关键问题是Bob不知道错误发生位置。他将采取的方法是错误定位多项式(error-locator polynomial) \(E(x) = (x − e_1)(x − e_2) · · · (x − e_k)\)，这是一个\(k\)次多项式，\(e_i\)表示错误发生的位置。<br>
+    我们可以注意到\(P(i)E(i) = r_iE(i)\)在(\(1 ≤ i ≤ n + 2k)\)上成立，因为在错误的位置定位多项式等于0。<br>
+    定义\(Q(x) := P(x)E(x)\)，我们可以得到：<br>
+    \(Q(x) = a_{n+k−1}x^{n+k−1} + a_{n+k−2}x^{n+k−2} + · · · + a_1x + a_0\)<br>
+    \(E(x) = x^k + b{k−1}x^{k−1} + · · · + b_1x + b_0\)<br>
+    利用\(Q(i) = r_iE(i)\)构建方程组，
+    \(a_{n+k−1}i^{n+k−1} + a_{n+k−2}i^{n+k−2} + · · · + a_1i + a_0 = r_i(i^k + b_{k−1}i^{k−1} + · · · + b_1i + b_0) (mod q)\)
+    可以解出各项的系数。
+    </p>
+</body>
+
+### Distance properties
