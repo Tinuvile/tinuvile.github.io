@@ -19,3 +19,5 @@ related: true
 - 组合码，基于图论。
 
 ### Erasure Errors
+
+我们考虑两种情况
