@@ -49,4 +49,7 @@ Lagrange interpolation
      </p>
 </body>
 
+[Wiki 上的相关介绍](<https://en.wikipedia.org/wiki/Field_(mathematics)>)<br>
+[伽瓦罗域](https://en.wikipedia.org/wiki/Finite_field)
+
 ## 计数(Counting)
