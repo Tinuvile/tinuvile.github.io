@@ -1,5 +1,5 @@
 ---
-title: "CS61B"
+title: "CS61B合集"
 layout: archive
 permalink: /CS61B/
 author_profile: true

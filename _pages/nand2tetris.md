@@ -1,5 +1,5 @@
 ---
-title: "nand2tetris"
+title: "nand2tetris合集"
 layout: archive
 permalink: /nand2tetris/
 author_profile: true

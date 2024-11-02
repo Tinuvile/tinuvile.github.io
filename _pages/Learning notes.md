@@ -12,12 +12,12 @@ author_profile: true
     </li>  
   {% endfor %}  
   <li>  
-    <a href="{{ site.baseurl }}/CS70/">CS70 Notes</a>  
+    <a href="{{ site.baseurl }}/CS70/">CS70 合集</a>  
   </li>  
   <li>  
-    <a href="{{ site.baseurl }}/nand2tetris/">nand2tetris</a>  
+    <a href="{{ site.baseurl }}/nand2tetris/">nand2tetris 合集</a>  
   </li>  
   <li>  
-    <a href="{{ site.baseurl }}/CS61B/">CS61B</a>  
+    <a href="{{ site.baseurl }}/CS61B/">CS61B 合集</a>  
   </li>  
 </ul>
