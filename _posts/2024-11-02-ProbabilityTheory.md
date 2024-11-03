@@ -12,5 +12,5 @@ related: true
 ---
 
 <div id="divPdfViewPanel2" style="margin: 5px;">  
-    <iframe src="/assets/js/pdfjs/web/viewer.html?file={{ '/assets/pdf/NOTES.pdf' | relative_url }}" width="100%" height="600px" style="border: none;"></iframe>  
+    <iframe src="/assets/js/pdfjs/web/viewer.html?file={{ '/assets/pdf/概率论复习.pdf' | relative_url }}" width="100%" height="600px" style="border: none;"></iframe>  
 </div>
