@@ -1,6 +1,6 @@
 ---
 title: "Java相关简介"
-date: 2024-10-22
+date: 2024-11-09
 categories: [CS61B]
 tags: [Java, CS61B]
 layout: single
@@ -738,3 +738,9 @@ while (seer.hasNext()) {
 - public 访问权限对所有人打开。
 
 ## Encapsulation, API, ADT
+
+1. 封装：如果一个模块的实现是完全隐藏的，只能通过接口访问，则称该模块是封装的。
+2. API：ADT 的 API 是构造函数和方法的列表以及每个方法的简短描述，由语法和语义规范组成。
+   - 编译器验证是否符合语法，即 API 中定义的内容都存在；
+   - 测试验证语义是否正确，即功能实现，语义规范常用英文写作；
+3. ADT
