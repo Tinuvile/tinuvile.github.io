@@ -373,9 +373,9 @@ public static OurComparable max(OurComparable[] items) {
 
 Java 中具有一些内置的 Abstract 数据类型在 Java 库中。java.util 库中有三个最重要的 ADT：
 
-- List：项的有序集合，常用实现是 ArrayList；
-- Set：严格唯一的项的无序集合（无重复），常用实现是 HashSet；
-- Map：键值对的集合，可以通过 key 访问该值，常用实现是 HashMap。
+- List：项的有序集合，常用实现是 [ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)；
+- Set：严格唯一的项的无序集合（无重复），常用实现是 [HashSet](https://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html)；
+- Map：键值对的集合，可以通过 key 访问该值，常用实现是 [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)。
 
 ### Abstract classes
 
