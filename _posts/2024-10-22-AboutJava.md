@@ -37,6 +37,8 @@ Java 中的所有代码都必须是类（或类似的东西）的一部分，大
 - 类的变量和方法也称为类的成员；
 - 类 Bird 的成员使用 Bird.xxx 进行访问；
 
+<strong>对象、数组与类等的实例化在电脑操作中表现为创建一个 64 位的指针指向实例化的地址。</strong>
+
 ### Constructors in Java
 
 我们通常使用构造函数在面向对象语言中构造对象，我们只需向类中加一个"constructor"
@@ -641,7 +643,7 @@ Lucy is a happy Retriever weighing 80.0 standard lb units.
 同时，也存在一些必须处理才能通过编译器编译的异常，我们将这些称为"checked"异常，必须选中。如下图所示：
 
 <div class="photo">
-     <img src="/assets/images/checked_exceptions.png">
+     <img src="/assets/images/CS61B/checked_exceptions.png">
 </div>
 
 而处理它们的方式有两种：
