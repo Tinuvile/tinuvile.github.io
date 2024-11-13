@@ -1,5 +1,5 @@
 ---
-title: "数据结构————列表"
+title: "数据结构——列表"
 date: 2024-11-12
 categories: [CS61B]
 tags: [Java, CS61B]
@@ -12,6 +12,8 @@ related: true
 ---
 
 [详细介绍见 Josh Hug 为 Berkeley CS61B 编写的教材](https://joshhug.gitbooks.io/hug61b/content/)
+
+[一个数据结构可视化网站](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 
 ## 基础实现
 
