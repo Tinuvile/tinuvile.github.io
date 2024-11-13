@@ -13,6 +13,8 @@ related: true
 
 [详细介绍见 Josh Hug 为 Berkeley CS61B 编写的教材](https://joshhug.gitbooks.io/hug61b/content/)
 
+[最新版本](https://cs61b-2.gitbook.io/cs61b-textbook)
+
 [一个数据结构可视化网站](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 
 ## 基础实现
