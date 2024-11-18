@@ -1,6 +1,6 @@
 ---
 title: "数据结构——树"
-date: 2024-11-13
+date: 2024-11-18
 categories: [CS61B]
 tags: [Java, CS61B]
 layout: single
@@ -126,4 +126,98 @@ static BTS delete(BTS T, Key dk) {
 }
 ```
 
+## Θ 与 O
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>
+<body>
+    <p>\(Θ\) 符号表示算法的精确复杂度，它既提供了上界也提供了下界。换句话说，\(Θ(f(n))\) 表示存在常数 \(c_1、c_2 和 n_0\)，使得对于所有 \(n ≥ n_0\)，\(T(n)\) 满足 \(c_1 f(n) ≤ T(n) ≤ c_2 f(n)\)。也就是说，\(Θ\) 符号可以用来表示算法在输入规模增加时的行为是紧密围绕着一个函数的。
+    </p>
+    <p>
+    而大\(O\)符号用于描述算法的上界，即在最坏情况下算法的复杂度。比如，\(O(n)\) 表示在最坏情况下，算法的执行时间不会超过一个与输入规模 \(n\) 成正比的量。在数学上，\(O(f(n))\) 表示存在常数 \(c\) 和 \(n_0\)，使得对于所有 \(n ≥ n_0\)，算法的运行时间 \(T(n)\) 满足 \(T(n) ≤ c * f(n)\)。
+    </p>
+</body>
+
 ## B-树
+
+对于树，Height 指最深的叶子的深度，而 depth 指与特定节点的根的距离，树的平均深度即为每个节点深度的平均值。
+
+<head>  
+    <meta charset="UTF-8">    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+</head>
+<body>
+     <p>
+     实际上，考虑随机的树，我们可以证明\(E(d)=2 \ln{n}\)并且\(E(h)=4.311 \ln{n}\)。
+     </p>
+</body>
+
+### B-Tree Operations
+
+为尽可能减少树的 height，我们的第一个想法是：在插入新值时不再插入新节点，而是将新值堆叠到适当位置的现有的叶节点中即可。但这种方法的问题在于，其又会导致大的叶节点几乎变成了一个值列表。
+
+<div class="photo">
+     <img src="/assets/images/CS61B/BTree1.png">
+</div>
+<br>
+因此我们添加一个修复，当叶节点达到一定数量的值时，我们考虑向上移动一个值。
+
+<div class="photo">
+     <img src="/assets/images/CS61B/BTree2.png">
+</div>
+<br>
+同时，向上移动后仍需满足二叉搜索的条件，因此我们需要第二个修复，把子节点进行分隔。
+
+<div class="photo">
+     <img src="/assets/images/CS61B/BTree3.png">
+</div>
+<br>
+而如果根节点大于限制值，则我们被迫增加树的高度。
+
+### B-Tree Invariants
+
+B-Tree 有两个不变量
+
+- 所有叶子（最底层）与根的距离都相同；
+- 具有 k 个项的非叶节点必须恰好具有 k+1 个子节点。
+
+## Red Black Trees
+
+### Rotating Trees
+
+所谓旋转树，旋转的正式定义是：
+
+- rotateLeft(G): Let x be the right child of G. Make G the new left child of x.
+- rotateRight(G): Let x be the left child of G. Make G the new right child of x.
+
+例如，将节点 G 向左旋转：
+
+<div class="photo">
+     <img src="/assets/images/CS61B/Rotating1.png">
+</div>
+<br>
+
+代码的实现如下：
+
+```java
+private Node rotateRight(Node h) {
+    // assert (h != null) && isRed(h.left);
+    Node x = h.left;
+    h.left = x.right;
+    x.right = h;
+    return x;
+}
+
+// make a right-leaning link lean to the left
+private Node rotateLeft(Node h) {
+    // assert (h != null) && isRed(h.right);
+    Node x = h.right;
+    h.right = x.left;
+    x.left = h;
+    return x;
+}
+```
