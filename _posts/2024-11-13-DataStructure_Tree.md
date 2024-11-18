@@ -17,7 +17,7 @@ related: true
 
 [一个数据结构可视化网站](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 
-## 二叉搜索树(Binary Search Trees)
+## Binary Search Trees
 
 为了改进搜索性能，我们可以使用二叉搜索，最基础的改进是引用中间节点，然后翻转节点指针遍历两边；同样，我们可以这样向每个递归半部分的中间添加指针以进一步优化，这样就形成了二叉树，每个节点都一分为二。
 
@@ -50,9 +50,9 @@ private class BST<Key> {
 }
 ```
 
-接下来我们完成 BTS 模块中的一些操作。
+接下来我将完成 BTS 模块中的一些操作。
 
-### 搜索
+### find
 
 find 操作的代码如下：
 
@@ -69,7 +69,7 @@ static BST find(BST T, Key sk) {
 }
 ```
 
-### 插入
+### insert
 
 ```java
 static BST insert(BST T, Key ik) {
@@ -83,7 +83,7 @@ static BST insert(BST T, Key ik) {
 }
 ```
 
-### 删除
+### delete
 
 删除操作中，我们需要将情况分为三类：
 
@@ -141,7 +141,7 @@ static BTS delete(BTS T, Key dk) {
     </p>
 </body>
 
-## B-树
+## B-Tree
 
 对于树，Height 指最深的叶子的深度，而 depth 指与特定节点的根的距离，树的平均深度即为每个节点深度的平均值。
 
@@ -163,20 +163,28 @@ static BTS delete(BTS T, Key dk) {
 <div class="photo">
      <img src="/assets/images/CS61B/BTree1.png">
 </div>
-<br>
+
 因此我们添加一个修复，当叶节点达到一定数量的值时，我们考虑向上移动一个值。
 
 <div class="photo">
      <img src="/assets/images/CS61B/BTree2.png">
 </div>
-<br>
+
 同时，向上移动后仍需满足二叉搜索的条件，因此我们需要第二个修复，把子节点进行分隔。
 
 <div class="photo">
      <img src="/assets/images/CS61B/BTree3.png">
 </div>
-<br>
+
 而如果根节点大于限制值，则我们被迫增加树的高度。
+
+这样的树结构具有完美的平衡。如果根节点需要拆分，那么所有节点都将下推一级；而如果我们拆分叶或内部节点，则高度不会改变。
+没有会导致不平衡的变化产生。
+
+此结构就叫做 B-Tree，将每个节点限制为 3 个项目的 B-Tree 也称为 2-3-4 Tree 或 2-4 Tree（即一个节点可以有 2、3 或 4 个子节点），
+而将每个节点设置为两个项目限制则称为 2-3 Tree。
+
+B-Tree 常用于具有大量记录的数据库与文件系统中。
 
 ### B-Tree Invariants
 
@@ -199,7 +207,6 @@ B-Tree 有两个不变量
 <div class="photo">
      <img src="/assets/images/CS61B/Rotating1.png">
 </div>
-<br>
 
 代码的实现如下：
 
@@ -221,3 +228,77 @@ private Node rotateLeft(Node h) {
     return x;
 }
 ```
+
+旋转树的目的是对树的平衡性进行修复，不同的树的平衡性定义有所不同。
+
+<div class="photo">
+     <img src="/assets/images/CS61B/屏幕截图 2024-11-18 164616.png">
+</div>
+
+<small>原文见[OI wiki](https://oi-wiki.org/ds/bst/)</small>
+
+### Creating LLRB Trees
+
+2-3 Tree 虽然具有很好的平衡性，但实现起来比较复杂；而 BST 虽然可能不平衡，但简单直观。我们希望把二者的优点结合，创建一个使用 BST 实现的树，
+但结构上与 2-3 树一致，这就是 Red Black Trees 红黑树。
+
+当 2-3 树中的内部节点只具有两个子节点时，我们不需要进行改动即同样是 BST 树。而当内部节点具有 3 个子节点时，我们可以创建一个虚拟的 Glue 节点，
+用于显示其两个子节点实际上是该节点的一部分。如图：
+
+<div class="photo">
+     <img src="/assets/images/CS61B/Glue.png">
+</div>
+
+但这样会占用更多空间，所以我们选择将虚拟的 Glue 节点转化为 Glue 链接，我们任意选择使左侧元素成为右侧元素的子元素，这样即会产生一个左倾的树。
+
+<div class="photo">
+     <img src="/assets/images/CS61B/LLRB.png">
+</div>
+
+图中红色的链接表示 Glue 链接，正常链接为黑色，这样的结构称为左倾红黑树(left-leaning red-black trees)。每棵左倾红黑树与 2-3 树都是一一对应的，
+而 2-3-4 树与标准红黑树保持对应关系。
+
+LLRB 树有以下特性：
+
+- 与 2-3 Tree 一一对应；
+- 没有节点有两个红色链接；
+- 没有红色的右链接；
+- 从 root 到 leaf 的每条路径都有相同数量的黑色链接
+- 高度不高于 2-3 Tree 的 2 倍加 1；
+- 红黑树的高度与条目数量（即树中所有独立的数据项的数量）的对数成正比。
+
+### Inserting LLRB Trees
+
+LLRB 的插入总体与 BTS 一致，但为了保持结构，我们需要对一些情况进行旋转操作。
+
+进行插入操作时，我们总是使用红色链接将新节点与其父节点连接，这是因为在 2-3 Tree 中，我们总是通过添加至叶节点来插入。有三种情况我们需要
+额外操作维护 LLRB 的正确结构。
+
+- 情况 1：插入导致右倾
+
+  - 操作：rotateLeft(node)
+  - 左倾的红黑树永远不能有右红链接
+  - 如果左侧子项也是红色链接，我们将暂时允许两个同时存在，以便在情况 3 中进行处理
+
+  <div class="photo">
+       <img src="/assets/images/CS61B/LLRB1.png">
+  </div>
+
+- 情况 2：左侧有两个红色链接
+
+  - 操作：rotateRight(node)
+  - 左侧有两个红色链接导致我们有一个非法的四节点
+  - 我们旋转生成一个与情况 1 中双红节点一样的结构，然后在情况 3 中进行处理
+
+  <div class="photo">
+       <img src="/assets/images/CS61B/LLRB2.avif">
+  </div>
+
+- 情况 3：节点有两个红色的子节点
+
+  - 操作：颜色翻转
+  - 反转所有与该节点接触的链接的颜色，相当于把 2-3 Tree 的中间节点往上推
+
+  <div class="photo">
+     <img src="/assets/images/CS61B/LLRB3.avif">
+  </div>
