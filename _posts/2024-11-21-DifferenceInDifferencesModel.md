@@ -46,7 +46,7 @@ related: true
 </body>
 
 <div class="photo">
-     <img src="/assets/images/elseLearn/DID1.png">
+     <img src="/assets/images/elselearn/DID1.png">
 </div>
 
 ## 3、回归模型中的双重差分法
@@ -75,7 +75,7 @@ related: true
 </body>
 
 <div class="photo">
-     <img src="/assets/images/elseLearn/DID2.png">
+     <img src="/assets/images/elselearn/DID2.png">
 </div>
 
 ## 4、多期双重差分法
